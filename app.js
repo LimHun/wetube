@@ -23,6 +23,8 @@ app.use(helmet())
  */
 app.set('view engine', "pug")
 
+app.use("/uploads", express.static("uploads"))
+
 // 요청된 쿠키를 쉽게 추출할 수 있도록 해주는 미들웨어 cookieParser
 app.use(cookieParser())
 
