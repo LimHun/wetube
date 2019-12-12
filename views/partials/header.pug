@@ -11,9 +11,9 @@ header.header
             ul
                 if !user.isAuthenticated
                     li
-                        a(href=routes.join) Join 
+                        a(href=routes.join) Join
                     li
-                        a(href=routes.login) Log In
+                        a(href=routes.login) LogIn
                 else
                     li
                         a(href=`/videos${routes.upload}`) Upload

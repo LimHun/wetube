@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true, // 몽고디비 디폴트 설정 세팅
-  userFindAndModify: false
+    useNewUrlParser: true, // 몽고디비 디폴트 설정 세팅
+    useFindAndModify: false,
+    useUnifiedTopology: true
 });
 
 const db = mongoose.connection;

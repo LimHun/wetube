@@ -3,11 +3,15 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import passport from "passport";
+import session from "express-session";
 import { localsMiddleware } from "./middlewares";
 import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+
+import "./passport";
 
 const app = express();
 
@@ -33,6 +37,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 로그 기록을 남기는 morgan 모듈
 app.use(morgan("dev"));
+
+app.use(
+    session({
+        secret: process.env.COOKIE_SECRET,
+        resave: true,
+        saveUninitialized: false
+    })
+);
+
+// passport 초기화
+app.use(passport.initialize());
+
+// passport 스스로 쿠키를 들여다 봐서 그 쿠키 정보에 해당하는 사용자를 츶음
+app.use(passport.session());
+
 app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
