@@ -4,7 +4,9 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
+import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import routes from "./routes";
 import userRouter from "./routers/userRouter";
@@ -14,6 +16,8 @@ import globalRouter from "./routers/globalRouter";
 import "./passport";
 
 const app = express();
+
+const CokieStore = MongoStore(session);
 
 const PORT = 4000;
 
@@ -38,11 +42,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 로그 기록을 남기는 morgan 모듈
 app.use(morgan("dev"));
 
+// 웹페이지 쿠기를 사용할 수 있도록 세팅한다.
 app.use(
     session({
         secret: process.env.COOKIE_SECRET,
         resave: true,
-        saveUninitialized: false
+        saveUninitialized: false,
+        stroe: new CokieStore({ mongooseConnection: mongoose.connection })
     })
 );
 
