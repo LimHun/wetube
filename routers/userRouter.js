@@ -1,11 +1,19 @@
-import express from "express" 
-import routes from "../routes"
-import { userDetail, editProfile, changePassword } from "../controller/userController"
+import express from "express";
+import routes from "../routes";
+import {
+    userDetail,
+    getEditProfile,
+    changePassword,
+    postEditProfile
+} from "../controller/userController";
+import { onlyPrivate } from "../middlewares";
 
-const userRouter = express.Router()
+const userRouter = express.Router();
 
-userRouter.get(routes.editProfile, editProfile)
-userRouter.get(routes.changePassword, changePassword)
-userRouter.get(routes.userDetail(), userDetail)
+userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
+userRouter.post(routes.editProfile, onlyPrivate, postEditProfile);
+userRouter.get(routes.changePassword, onlyPrivate, getChangePassword);
+userRouter.post(routes.changePassword, onlyPrivate, postChangePassword);
+userRouter.get(routes.userDetail(), userDetail);
 
-export default userRouter
+export default userRouter;
