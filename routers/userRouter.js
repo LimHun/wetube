@@ -6,7 +6,7 @@ import {
     postEditProfile,
     getChangePassword,
     postChangePassword
-} from "../controller/userController";
+} from "../controllers/userController";
 import { onlyPrivate, uploadAvatar } from "../middlewares";
 
 const userRouter = express.Router();
