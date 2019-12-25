@@ -35,15 +35,20 @@ export const postUpload = async (req, res) => {
         body: { title, description },
         file: { location }
     } = req;
-    const newVideo = await Video.create({
-        fileUrl: location,
-        title,
-        description,
-        creator: req.user.id
-    });
-    req.user.videos.push(newVideo.id);
-    req.user.save();
-    res.redirect(routes.videoDetail(newVideo.id));
+    //try{
+        const newVideo = await Video.create({
+            fileUrl: location,
+            title,
+            description,
+            creator: req.user.id
+        });
+    
+        req.user.videos.push(newVideo.id);
+        req.user.save();
+        res.redirect(routes.videoDetail(newVideo.id));
+    // } catch(error) {
+    //     console.log(error)
+    // }
 };
 
 export const videoDetail = async (req, res) => {
