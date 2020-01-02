@@ -19,8 +19,6 @@ const app = express();
 
 const CokieStore = MongoStore(session);
 
-const PORT = 4000;
-
 // Helmet을 이용하면 HTTP 헤더를 적절히 설정하여 몇 가지 잘 알려진 웹 취약성으로부터 앱을 보호할 수 있습니다.
 app.use(helmet());
 
