@@ -1,13 +1,17 @@
-@import "../scss/config/_variables.sass";
-@import "../scss/config/reset.scss";
-@import "../scss/config/utils.scss";
-@import "../scss/main.scss";
-@import "../scss/partials/header.scss";
-@import "../scss/partials/footer.scss";
-@import "../scss/partials/form.scss";
-@import "../scss/partials/socialLogin.scss";
-@import "../scss/partials/videoBlock.scss";
+@import "config/_variables.scss";
+@import "config/reset.scss";
+@import "config/utils.scss";
+@import "main.scss";
 
-@import "../scss/pages/home.scss";
-@import "../scss/pages/videoDetail.scss";
-@import "../scss/pages/userProfile.scss";
+@import "partials/header.scss";
+@import "partials/footer.scss";
+@import "partials/form.scss";
+@import "partials/socialLogin.scss";
+@import "partials/videoBlock.scss";
+@import "partials/videoPlayer.scss";
+@import "partials/videoRecorder.scss";
+@import "partials/messages.scss";
+
+@import "pages/home.scss";
+@import "pages/videoDetail.scss";
+@import "pages/userProfile.scss";

@@ -423,12 +423,157 @@ textarea,
 
 .videoBlock video {
   margin-bottom: 10px;
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden; }
 
 .videoBlock .videoBlock__title {
   font-size: 18px;
   font-weight: 300;
   margin-bottom: 10px; }
+
+.videoPlayer {
+  position: relative; }
+  .videoPlayer:hover .videoPlayer__controls {
+    opacity: 1; }
+  .videoPlayer video {
+    width: 100%;
+    max-width: 100%; }
+  .videoPlayer .videoPlayer__controls {
+    opacity: 0;
+    -webkit-transition: opacity 0.4s linear;
+    -o-transition: opacity 0.4s linear;
+    -moz-transition: opacity 0.4s linear;
+    transition: opacity 0.4s linear;
+    color: white;
+    position: absolute;
+    z-index: 9;
+    bottom: 5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 16px; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:first-child {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      span: first-child;
+        span-margin-right: 10px; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:last-child {
+      justify-self: end; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:nth-child(2) {
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+         -moz-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+    .videoPlayer .videoPlayer__controls i {
+      font-size: 25px;
+      cursor: pointer; }
+
+.record-container {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 50px; }
+  .record-container video {
+    background-color: #444444;
+    width: 100%;
+    margin-bottom: 20px; }
+
+@-webkit-keyframes flashAnimation {
+  0% {
+    -webkit-transform: translateY(-70px);
+            transform: translateY(-70px); }
+  5% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
+  95% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
+  100% {
+    -webkit-transform: translateY(-70px);
+            transform: translateY(-70px); } }
+
+@-moz-keyframes flashAnimation {
+  0% {
+    -moz-transform: translateY(-70px);
+         transform: translateY(-70px); }
+  5% {
+    -moz-transform: translateY(0px);
+         transform: translateY(0px); }
+  95% {
+    -moz-transform: translateY(0px);
+         transform: translateY(0px); }
+  100% {
+    -moz-transform: translateY(-70px);
+         transform: translateY(-70px); } }
+
+@-o-keyframes flashAnimation {
+  0% {
+    -o-transform: translateY(-70px);
+       transform: translateY(-70px); }
+  5% {
+    -o-transform: translateY(0px);
+       transform: translateY(0px); }
+  95% {
+    -o-transform: translateY(0px);
+       transform: translateY(0px); }
+  100% {
+    -o-transform: translateY(-70px);
+       transform: translateY(-70px); } }
+
+@keyframes flashAnimation {
+  0% {
+    -webkit-transform: translateY(-70px);
+       -moz-transform: translateY(-70px);
+         -o-transform: translateY(-70px);
+            transform: translateY(-70px); }
+  5% {
+    -webkit-transform: translateY(0px);
+       -moz-transform: translateY(0px);
+         -o-transform: translateY(0px);
+            transform: translateY(0px); }
+  95% {
+    -webkit-transform: translateY(0px);
+       -moz-transform: translateY(0px);
+         -o-transform: translateY(0px);
+            transform: translateY(0px); }
+  100% {
+    -webkit-transform: translateY(-70px);
+       -moz-transform: translateY(-70px);
+         -o-transform: translateY(-70px);
+            transform: translateY(-70px); } }
+
+.flash-message__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  padding: 20px;
+  text-align: center;
+  -webkit-animation: flashAnimation 5s ease-in-out forwards;
+     -moz-animation: flashAnimation 5s ease-in-out forwards;
+       -o-animation: flashAnimation 5s ease-in-out forwards;
+          animation: flashAnimation 5s ease-in-out forwards; }
+  .flash-message__container.error {
+    background-color: #e74c3c; }
+  .flash-message__container.success {
+    background-color: #2ecc71; }
+  .flash-message__container.info {
+    background-color: #f1c40f; }
+  .flash-message__container .flash-message__text {
+    color: white;
+    font-size: 14px; }
 
 .home-videos {
   display: grid;
